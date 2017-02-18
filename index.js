@@ -185,7 +185,7 @@ function receivedMessage(event) {
   	var message = "Please enter your city in this format: \n" +
   				  "Example: Quezon #City";
   	sendTextMessage(senderID, message);
-  } else if (messageText.includes('#city') || messageText.includes('city')) {
+  } else if (messageText.indexOf('#city') >= 0 || messageText.indexOf('city') >= 0) {
   	var text = messageText.split(" ");
   	var city = text[0];
   	url = "https://www.google.com/maps/search/law+firm+near+" + city + ",+Philippines/";
