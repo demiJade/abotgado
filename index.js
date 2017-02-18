@@ -89,12 +89,33 @@ function receivedMessage(event) {
         break;
 
       default:
-      	sendGenericMessage(senderID);
+      	sendAttachment(senderID);
+      	// sendGenericMessage(senderID);
         // sendTextMessage(senderID, "HI");
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
+}
+
+function sendAttachment(recipientId) {
+	var messageData = {
+		recipient: {
+			id: recipientId
+		}, 
+		message:{
+	    	mid: "mid.1458696618141:b4ef9d19ec21086067",
+	    	attachments:[
+	      	{
+		        type: "file",
+		        payload: {
+		          url:"http://www.lawphil.net/judjuris/juri2017/jan2017/pdf/gr_187448_2017.pdf"
+		        }
+	      	}
+	    	]	
+	  	}
+	}
+	callSendAPI(messageData);
 }
 
 function sendTextMessage(recipientId, messageText) {
