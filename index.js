@@ -191,6 +191,7 @@ function receivedMessage(event) {
   	var url = "https://www.google.com/maps/search/law+firm+near+" + city + ",+Philippines/";
   	var elements = [{
   		title: "Law Firms Near Your Location",
+  		image_url: "http://is2.mzstatic.com/image/thumb/Purple122/v4/0f/4e/67/0f4e672e-76f1-4a13-6be1-e3a057184fc6/source/175x175bb.jpg",
   		item_url: url
   	}];
   	sendUrlMessage(senderID, elements);
