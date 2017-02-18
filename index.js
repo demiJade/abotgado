@@ -22,7 +22,7 @@ const app = express()
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-const token = "EAATKfwulGJ4BAJs4adITTp6ccC0CpZBcVoEyRZAZBAIxcveVwUsUzfJGwFik4W5a2SpJWuOfZAMakF1HfT3zjkx2OUlGZBw2cJXXIrJt28kZB0gUE7ZBNmwcTSVQgMzUI4VAEazpMMpjDdCGbmbJKwnIDlZBA3XZCexVrPi9KqaC44gZDZD"
+const token = "EAAZARuDUHiLABAA3PZClPUdNpZCUGCipOsV94kGdZA1N32evN0uRtzGRfvk4os6IA0PUfqssiPxjXAhYyBppQjgC3SQBMWLen6920Imrlzglp6ZCumsJ7m4q96zZA7Q6cotBehhXZBMZASQ4IJFILrpCTekoWLd1bJ96SZBe1x9POnAZDZD"
 const PORT = process.env.PORT || 5000;
 
 var server = app.listen(PORT);
