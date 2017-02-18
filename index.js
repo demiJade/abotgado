@@ -144,26 +144,26 @@ function receivedMessage(event) {
   				  "D - I have a question regarding... \n";
   	sendTextMessage(senderID, message);
   } else if (messageText == "B" || messageText == "b") {
-  	var message = "F1 - Deed of Absolute Sale (Real Estate Property)\n" + 
-  				  "F2 - Contract to Sell (Real Estate Property)\n" +
-  				  "F3 - Chattel Mortgage (Motor Vehicle)\n" + 
-  				  "F4 - Contract of Lease/ Rent\n" +
-  				  "F5 - Rent-to-Own Contract (Real Estate Property)\n" + 
-  				  "F6 - Deed of Sale (Motor Vehicle)\n" +
-  				  "F7 - General Form of Affidavit\n" +
-  				  "F8 - Affidavit of Loss\n" +
-  				  "F9 - Earnest Money Receipt Agreement\n" +
-  				  "F10 - Affidavit of Desistance\n" +
-  				  "F11 - Acknowledgement of Receipt for Payments\n" +
-  				  "F12 - Acknowledgement of Debt\n" +
-  				  "F13 - General Power of Attorney\n" +
-  				  "F14 - Special Power of Attorney\n" +
-  				  "F15 - Deed of Assignment and Transer of Rights\n" +
-  				  "F16 - Deed of Donation\n" +
-  				  "F17 - Contract of Renovation/ Construction of a House or Building\n" +
-  				  "F18 - Authority to Sell/ Lease\n" +
-  				  "F19 - Offer to Purchase\n" +
-  				  "F20 - Last Will and Testament\n"; 
+  	var message = "F1 - Deed of Absolute Sale (Real Estate Property) \n" + 
+  				  "F2 - Contract to Sell (Real Estate Property) \n" +
+  				  "F3 - Chattel Mortgage (Motor Vehicle) \n" + 
+  				  "F4 - Contract of Lease/ Rent \n" +
+  				  "F5 - Rent-to-Own Contract (Real Estate Property) \n" + 
+  				  "F6 - Deed of Sale (Motor Vehicle) \n" +
+  				  "F7 - General Form of Affidavit \n" +
+  				  "F8 - Affidavit of Loss \n" +
+  				  "F9 - Earnest Money Receipt Agreement \n" +
+  				  "F10 - Affidavit of Desistance \n" +
+  				  "F11 - Acknowledgement of Receipt for Payments \n" +
+  				  "F12 - Acknowledgement of Debt \n" +
+  				  "F13 - General Power of Attorney \n" +
+  				  "F14 - Special Power of Attorney \n" +
+  				  "F15 - Deed of Assignment and Transer of Rights \n" +
+  				  "F16 - Deed of Donation \n" +
+  				  "F17 - Contract of Renovation/ Construction of a House or Building \n" +
+  				  "F18 - Authority to Sell/ Lease \n" +
+  				  "F19 - Offer to Purchase \n" +
+  				  "F20 - Last Will and Testament \n"; 
   	sendTextMessage(senderID, message);		  
   } else if (messageText == "C" || messageText == "c"){
   	var message = "What type of case? \n" +
