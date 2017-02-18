@@ -2,7 +2,7 @@ var messsages = [];
 var app = new Vue({
   el: '#app',
   data: {
-    messages: messages,
+    messages: [],
     new_message: "",
     senderId: ""
   }, 
@@ -31,8 +31,8 @@ socket.on('new_message_from_bot', function (data) {
 		text: data.message,
 		client: true,
 		atty: false
-	}
-	messages.push(obj);
+	};
+	app.messages.push(obj);
 	app.senderId = data.event.sender.id;
 });
 
