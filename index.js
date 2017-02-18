@@ -524,7 +524,6 @@ function sendUrlMessage(recipientId, elements) {
       id: recipientId
     },
     message: {
-      text: "Here's what I found. Check out this link.",
       attachment: {
         type: "template",
         payload: {
