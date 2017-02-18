@@ -8,8 +8,8 @@ var app = new Vue({
   methods: {
   	submit: function(){
   		var vm = this;
-  		console.log(vm.new_message)
-  		socket.emit('new_message_from_consultant', {message: vm.new_message, senderId: senderId});
+  		console.log(vm.new_message);
+  		socket.emit('new_message_from_consultant', {message: vm.new_message, senderId: vm.senderId});
   		vm.new_message = "";
   	}
   }

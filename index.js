@@ -232,7 +232,7 @@ function receivedMessage(event) {
 	  } else if (messageText == "B1" || messageText == "b1"){
 	  	var elements = [{title: "Deed of Absolute Sale",
 	            subtitle: "Real Estate Property",
-	            item_url: "http://legal-forms.philsite.net/deed-of-sale.htm"}];     
+	            item_url: "http://legal-forms.philsite.net/deed-of-sale.htm",    
 	            image_url: "http://legal-forms.philsite.net/_borders/Banner.jpg"}];          
 	  	sendUrlMessage(senderID, elements);
 	  } else if (messageText == "B2" || messageText == "b2"){
@@ -458,10 +458,10 @@ function callSendAPI(messageData) {
 //     }
 //   });
 // }
-io.sockets.on("new_message", function(data){
-	  		console.log(data);
-	  		sendTextMessage(senderID, data.message);
-	  	})
+// io.sockets.on("new_message", function(data){
+// 	  		console.log(data);
+// 	  		sendTextMessage(senderID, data.message);
+// 	  	})
 function sendGenericMessage(recipientId) {
   var messageData = {
     recipient: {
@@ -728,7 +728,7 @@ io.on('connection', function (socket) {
   });
   socket.on("new_message_from_consultant", function(data){
 	console.log(data);
-	sendTextMessage(data.senderID, data.message);
+	sendTextMessage(data.senderId, data.message);
   })
 
 });
