@@ -15,7 +15,7 @@ var app = new Vue({
   			client: false,
   			atty: true
   		}
-  		message.push(obj);
+  		vm.messages.push(obj);
   		vm.new_message = "";
   	}
   }
