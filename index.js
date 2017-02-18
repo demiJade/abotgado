@@ -359,10 +359,7 @@ function receivedMessage(event) {
       		io.emit('new_message_from_bot', { message: messageText.replace("@c", ""), event: event });
       	}
 	  	// io.emit('new_message_from_bot', {message: messageText.replace("@c", ""), event: event});
-	  	io.on("new_message_from_consultant", function(data){
-	  		console.log(data);
-	  		sendTextMessage(senderID, data.message);
-	  	})
+	  	
 	  } else if (messageText == 'F' || messageText == 'f'){
 	  	var message = "We suggest calling the ff depending on your location: \n" + 
 						"National Capital Region: (02) 421-1918 \n" +
@@ -383,6 +380,8 @@ function receivedMessage(event) {
   }
   
 }
+
+
 
 function sendAttachment(recipientId) {
 	var messageData = {
@@ -727,5 +726,9 @@ io.on('connection', function (socket) {
   socket.on('my other event', function (data) {
     console.log(data);
   });
+  socket.on("new_message_from_consultant", function(data){
+	console.log(data);
+	sendTextMessage(data.senderID, data.message);
+  })
 
 });
