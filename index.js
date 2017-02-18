@@ -144,14 +144,35 @@ function receivedMessage(event) {
   				  "D - I have a question regarding... \n";
   	sendTextMessage(senderID, message);
   } else if (messageText == "B" || messageText == "b") {
-  	var message = "F1 - Deed of Absolute Sale (Real Estate Property)" + 
-  				  "F2 - Contract to Sell (Real Estate Property)" +
-  				  "F3 - Chattel Mortgage (Motor Vehicle)" + 
-  				  "F4 - Contract of Lease/ Rent" +
-  				  "F5 - Rent-to-Own Contract (Real Estate Property)" + 
-  				  "F6 - Deed of Sale (Motor Vehicle)"; 
+  	var message = "F1 - Deed of Absolute Sale (Real Estate Property)\n" + 
+  				  "F2 - Contract to Sell (Real Estate Property)\n" +
+  				  "F3 - Chattel Mortgage (Motor Vehicle)\n" + 
+  				  "F4 - Contract of Lease/ Rent\n" +
+  				  "F5 - Rent-to-Own Contract (Real Estate Property)\n" + 
+  				  "F6 - Deed of Sale (Motor Vehicle)\n"; 
   	sendTextMessage(senderID, message);		  
+  } else if (messageText == "C" || messageText == "c"){
+  	var message = "What type of case? \n" +
+  				  "C1 - Criminal \n" +
+  				  "C2 - Civil \n";
+  	sendTextMessage(senderID, message);		  
+  } else if (messageText == "D" || messageText == 'd'){
+
+  } else if (messageText == "C1"){
+  	var elements = [{title: "File Criminal Case – Philippines",
+            subtitle: "Guide to Filing a Criminal Case in the Philippines",
+            item_url: "http://www.duranschulze.com/guide-filing-criminal-case-philippines/",               
+            image_url: "http://www.duranschulze.com/wp-content/uploads/2016/04/Filing-Criminal-Case-1.png"}];
+
+  	sendUrlMessage(senderID, elements);
+  } else if (messageText == "C2"){
+  	var elements = [{title: "File Civil Case – Philippines",
+            subtitle: "Guide to Filing a Civil Case in the Philippines",
+            item_url: "http://www.duranschulze.com/guide-filing-civil-case-philippines/",               
+            image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
+  	sendUrlMessage(senderID, elements);
   }
+
 
   else if (messageText){
   	sendTextMessage(senderID, "Got it!");
@@ -302,6 +323,25 @@ function sendPostbackMessage(recipientId) {
 
             }]
           }]
+        }
+      }
+    }
+  };  
+
+  callSendAPI(messageData);
+}
+
+function sendUrlMessage(recipientId, elements) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: elements
         }
       }
     }
