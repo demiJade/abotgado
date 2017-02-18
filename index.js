@@ -149,7 +149,7 @@ function receivedMessage(event) {
 	  				  "E - I want to talk to a lawyer. \n" + 
 	  				  "F - I am being assaulted and need urgent legal help. \n";
 	  	sendTextMessage(senderID, message);
-	  } else if (messageText == "A1" || messageText == "a1") {
+	  } else if (messageText == "A" || messageText == "a") {
 	  	var message = "A1 - How do you file a case? \n" + 
 	  				  "A2 - I have a question regarding... \n";
 	  	sendTextMessage(senderID, message);
@@ -352,7 +352,7 @@ function receivedMessage(event) {
 	  } else if (messageText == 'E' || messageText == 'e'){
 	  	io.emit('new_message_from_bot', { message: "A client has found you." });
 	  	var message = "Hello. You have been connected to a consultant. Send your concerns using a @atty tag. \n" +
-	  				  "Example: @c I have a concern regarding human rights.";
+	  				  "Example: @atty I have a concern regarding human rights.";
 	  	sendTextMessage(senderID, message);
 	  } else if (messageText.indexOf("@atty") != -1 || messageText.indexOf("@Atty") != -1){
 	  	if (event.recipient.id == '1868439726765694'){

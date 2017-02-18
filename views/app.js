@@ -10,6 +10,7 @@ var app = new Vue({
   		var vm = this;
   		console.log(vm.new_message);
   		socket.emit('new_message_from_consultant', {message: vm.new_message, senderId: vm.senderId});
+  		my_message.push(vm.new_message);
   		vm.new_message = "";
   	}
   }
@@ -20,6 +21,10 @@ var socket = io.connect('https://fierce-garden-60722.herokuapp.com/');
 // var socket = io.connect('http://localhost:5000');
 socket.on('new_message_from_bot', function (data) {
 	console.log(data);
+	var obj = {
+		text: data.message,
+		type: "client"
+	}
 	app.messages.push(data.message);
 	app.senderId = data.event.sender.id;
 });
