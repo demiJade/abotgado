@@ -23,6 +23,7 @@
     "passport-local": "^1.0.0",
     "q": "^1.0.1",
     "serve-favicon": "~2.3.0",
-    "vuejs-datepicker": "^0.5.4"
+    "vuejs-datepicker": "^0.5.4",
+    "socket.io": "*"
   }
 }
