@@ -342,7 +342,7 @@ function receivedMessage(event) {
 	  				  "Example: @c I have a concern regarding human rights.";
 	  	sendTextMessage(senderID, message);
 	  } else if (messageText.indexOf("@c") != -1 || messageText.indexOf("@C") != -1){
-	  	io.emit('new_message', {message: messageText.splice("@c"), event: event});
+	  	io.emit('new_message', {message: messageText.replace("@c", ""), event: event});
 	  	socket.on("new_message", function(data){
 	  		sendTextMessage(senderID, data.message);
 	  	})
