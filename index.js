@@ -1,14 +1,34 @@
 'use strict'
+var express = require('express');
+var app = express();
+var path = require('path');
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const app = express()
+var mongo = require('mongodb');
+var MongoClient = mongo.MongoClient;
+var userUrl = 'mongodb://localhost:27017/users';
+var bcrypt = require('bcryptjs');
+var session = require('express-session');
 
 
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+var fs = require('fs');
+// app.use(session({ secret: 'keyboard cat', resave:false, saveUninitialized:false }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 const token = "EAATKfwulGJ4BAJs4adITTp6ccC0CpZBcVoEyRZAZBAIxcveVwUsUzfJGwFik4W5a2SpJWuOfZAMakF1HfT3zjkx2OUlGZBw2cJXXIrJt28kZB0gUE7ZBNmwcTSVQgMzUI4VAEazpMMpjDdCGbmbJKwnIDlZBA3XZCexVrPi9KqaC44gZDZD"
-app.set('port', (process.env.PORT || 5000))
+
+
+var port = 3000;
+server.listen(3000);
+console.log("Listening to port " + port);
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
@@ -17,9 +37,20 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // Index route
-app.get('/', function (req, res) {
-    res.send('Hello world, I am a chat bot')
-})
+// app.get('/', function (req, res) {
+//     res.sendFile(path.join(__dirname,'views','index.html'));
+// });
+app.use(express.static('views'));
+app.get('/', function (req, res){
+    var user = req.user;
+        res.sendFile(path.join(__dirname,'views','index.html'));
+    console.log("sent user");
+    console.log(user);
+});
+
+app.get('/signin', function(req, res){
+    res.sendFile(path.join(__dirname, 'views', 'signin.html'));
+});
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
@@ -30,9 +61,9 @@ app.get('/webhook/', function (req, res) {
 })
 
 // Spin up the server
-app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
-})
+// app.listen(app.get('port'), function() {
+//     console.log('running on port', app.get('port'))
+// })
 
 app.post('/webhook', function (req, res) {
   var data = req.body;
@@ -78,7 +109,7 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-
+  socket.emit('new_message', { message: messageText });
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
@@ -217,3 +248,135 @@ function sendGenericMessage(recipientId) {
 //         }
 //     })
 // }
+
+
+//===========================USER AUTHENTICATION =====================================================//
+function authenticatedMiddleware(req, res, next){
+    console.log(req.isAuthenticated());
+    if (req.isAuthenticated()){
+        console.log("Authenticated!");
+        next();
+    }else{
+        res.redirect('/signin');
+    }
+}
+
+passport.use('local-login', new LocalStrategy(
+    function (username, password, done){
+        MongoClient.connect(userUrl, function(err, db){
+            var Users = db.collection('localUsers');
+            Users.findOne({"username":username}).then(function (user) {
+                if (!user){
+                    console.log("!user");
+                    console.log(user);
+                    return done(null, false);
+                }
+                if (!bcrypt.compareSync(password, user.password)){
+                    console.log("wrong pass");
+                    console.log(password);
+                    return done(null, false);
+                }
+                return done(null, user);
+                db.close();
+            });
+        });
+    }
+));
+
+passport.use('local-reg', new LocalStrategy(
+    {passReqToCallback: true},
+    function (req, username, email, password, done){
+        MongoClient.connect(userUrl, function(err, db){
+            var Users = db.collection('localUsers');
+            Users.findOne({"username":username}).then(function (user){
+                if (user){
+                    db.close();
+                    done(null, false);
+                } else {
+                    var hash = bcrypt.hashSync(password, 8);
+                    var user = {
+                        "username": username,
+                        "email": email,
+                        "password": hash
+                    }
+                    Users.insert(user).then(function(){
+                        db.close();
+                        done(null, user);
+                    });
+                }
+            });
+            
+        });
+    }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(username, done) {
+    done(null, username);
+});
+
+app.post('/login', function (req, res, next){
+    console.log("logging in");
+    passport.authenticate('local-login', function (err, user){
+        if (err){
+            console.log("error");
+            console.log(user);
+            return res.redirect('/signin');
+        }
+        if (!user){
+            console.log("User not found");
+            return res.redirect('/signin');
+        }
+        req.logIn(user, function(err){
+            if (err){
+                return next(err);
+            }
+            users.push(user);
+            console.log("Logged in");
+            return res.redirect('/');
+        })
+    })(req, res, next);
+});
+
+app.post('/register', function (req, res, next){
+    passport.authenticate('local-reg', function (err, user){
+        if (err){
+            console.log("error");
+            console.log(user);
+            return res.redirect('/signin');
+        }
+        if (!user){
+            console.log("User already exists");
+            return res.redirect('/signin');
+        }
+        req.logIn(user, function(err){
+            if (err){
+                return next(err);
+            }
+            console.log("Logged in");
+            return res.redirect('/');
+        })
+    })(req, res, next);
+});
+
+app.get('/logout', function(req, res){
+  var name = req.user.username;
+  console.log("LOGGIN OUT " + req.user.username)
+  req.logout();
+  res.redirect('/');
+  req.session.notice = "You have successfully been logged out " + name + "!";
+});
+
+
+//=================================================================================================//
+
+io.on('connection', function (socket) {
+    console.log("socket.id" + socket.id);
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
