@@ -188,121 +188,121 @@ function receivedMessage(event) {
   } else if (messageText == "F1" || messageText == "f1"){
   	var elements = [{title: "Deed of Absolute Sale",
             subtitle: "Real Estate Property",
-            item_url: "http://legal-forms.philsite.net/deed-of-sale.htm",               
+            item_url: "http://legal-forms.philsite.net/deed-of-sale.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F2" || messageText == "f2"){
   	var elements = [{title: "Contract to Sell",
             subtitle: "Real Estate Property",
-            item_url: "http://legal-forms.philsite.net/contract-to-sell.htm",               
+            item_url: "http://legal-forms.philsite.net/contract-to-sell.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F3" || messageText == "f3"){
   	var elements = [{title: "Chattel Mortgage",
             subtitle: "Motor Vehicle",
-            item_url: "http://legal-forms.philsite.net/chattel-mortgage.htm",               
+            item_url: "http://legal-forms.philsite.net/chattel-mortgage.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F4" || messageText == "f4"){
   	var elements = [{title: "Contract of Lease or rent",
             //subtitle: "Motor Vehicle",
-            item_url: "http://legal-forms.philsite.net/lease-contract.htm",               
+            item_url: "http://legal-forms.philsite.net/lease-contract.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F5" || messageText == "f5"){
   	var elements = [{title: "Rent-to-Own Contract",
             subtitle: "Real Estate Property",
-            item_url: "http://legal-forms.philsite.net/rent-to-own.htm",               
+            item_url: "http://legal-forms.philsite.net/rent-to-own.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F6" || messageText == "f6"){
   	var elements = [{title: "Deed of Sale",
             subtitle: "Motor Vehicle",
-            item_url: "http://legal-forms.philsite.net/deed-of-sale-vehicle.htm",               
+            item_url: "http://legal-forms.philsite.net/deed-of-sale-vehicle.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F7" || messageText == "f7"){
   	var elements = [{title: "General Form of Affidavit",
             //subtitle: "Motor Vehicle",
-            item_url: "http://legal-forms.philsite.net/general-affidavit.htm",               
+            item_url: "http://legal-forms.philsite.net/general-affidavit.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F8" || messageText == "f8"){
   	var elements = [{title: "Affidavit of Loss",
             subtitle: "Motor Vehicle registration/ License",
-            item_url: "http://legal-forms.philsite.net/affidavit-of-loss.htm",               
+            item_url: "http://legal-forms.philsite.net/affidavit-of-loss.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F9" || messageText == "f9"){
   	var elements = [{title: "Earnest Money Receipt Agrement",
             // subtitle: "Motor Vehicle registration/ License",
-            item_url: "http://legal-forms.philsite.net/receipt-agreement.htm",               
+            item_url: "http://legal-forms.philsite.net/receipt-agreement.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F10" || messageText == "f10"){
   	var elements = [{title: "Affidavit of Desistance",
             // subtitle: "Motor Vehicle registration/ License",
-            item_url: "http://legal-forms.philsite.net/affidavit-of-desistance.htm",               
+            item_url: "http://legal-forms.philsite.net/affidavit-of-desistance.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F11" || messageText == "f11"){
   	var elements = [{title: "Acknowledgement Receipt for Payments",
             // subtitle: "Motor Vehicle registration/ License",
-            item_url: "http://legal-forms.philsite.net/acknowledgement-receipt.htm",               
+            item_url: "http://legal-forms.philsite.net/acknowledgement-receipt.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F12" || messageText == "f12"){
   	var elements = [{title: "Acknowledgement of Debt",
             // subtitle: "Motor Vehicle registration/ License",
-            item_url: "http://legal-forms.philsite.net/acknowledgement-of-debt.htm",               
+            item_url: "http://legal-forms.philsite.net/acknowledgement-of-debt.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F13" || messageText == "f13"){
   	var elements = [{title: "General Power of Attorney",
             // subtitle: "Motor Vehicle registration/ License",
-            item_url: "http://legal-forms.philsite.net/power-of-attorney.htm",               
+            item_url: "http://legal-forms.philsite.net/power-of-attorney.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F14" || messageText == "f14"){
   	var elements = [{title: "Special Power of Attorney",
             // subtitle: "Motor Vehicle registration/ License",
-            item_url: "http://legal-forms.philsite.net/power-of-attorney2.htm",               
+            item_url: "http://legal-forms.philsite.net/power-of-attorney2.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F15" || messageText == "f15"){
   	var elements = [{title: "Deed of Assignment & Transfer of Rights",
              subtitle: "Real Estate",
-            item_url: "http://legal-forms.philsite.net/transfer-of-rights.htm",               
+            item_url: "http://legal-forms.philsite.net/transfer-of-rights.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F16" || messageText == "f16"){
   	var elements = [{title: "Deed of Donation",
              //subtitle: "Real Estate",
-            item_url: "http://legal-forms.philsite.net/deed-of-donation.htm",               
+            item_url: "http://legal-forms.philsite.net/deed-of-donation.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F17" || messageText == "f17"){
   	var elements = [{title: "Contract of Renovtion/ Construction of House or Building",
              //subtitle: "Real Estate",
-            item_url: "http://legal-forms.philsite.net/renovation-contract.htm",               
+            item_url: "http://legal-forms.philsite.net/renovation-contract.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F18" || messageText == "f18"){
   	var elements = [{title: "Authority to Sell/ Lease",
              //subtitle: "Real Estate",
-            item_url: "http://legal-forms.philsite.net/authority-to-sell.htm",               
+            item_url: "http://legal-forms.philsite.net/authority-to-sell.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F19" || messageText == "f19"){
   	var elements = [{title: "Offer to Purchase",
              subtitle: "Real Estate Property",
-            item_url: "http://legal-forms.philsite.net/offer-to-purchase.htm",               
+            item_url: "http://legal-forms.philsite.net/offer-to-purchase.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } else if (messageText == "F20" || messageText == "f20"){
   	var elements = [{title: "Last Will and Testament",
              //subtitle: "Real Estate Property",
-            item_url: "http://legal-forms.philsite.net/will-testament.htm",               
+            item_url: "http://legal-forms.philsite.net/will-testament.htm"}];               
             //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
   	sendUrlMessage(senderID, elements);
   } 
