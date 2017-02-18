@@ -143,8 +143,7 @@ function receivedMessage(event) {
         
     // }
   } else if (messageText == "hi" || messageText == "Hi") {
-  	var user = getUserData(senderID);
-  	var message = "Hello " + user.first_name + ". How may I help you? \n" +
+  	var message = "Hello. How may I help you? \n" +
   				  "A - I have a question about legal procedures.\n" + 
   				  "B - I have a question about legal forms. \n" +
   				  "C - I want to find the nearest law firm. \n" + 
@@ -392,26 +391,27 @@ function callSendAPI(messageData) {
   });  
 }
 
-function getUserData (user_id){
-	request({
-    uri: 'https://graph.facebook.com/v2.6/' + user_id,
-    qs: { access_token: token },
-    method: 'GET'
+// function getUserData (user_id){
+// 	request({
+//     uri: 'https://graph.facebook.com/v2.6/' + user_id,
+//     qs: { access_token: token },
+//     method: 'POST',
+//     json: messageData
 
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-      return response;
-      // console.log("Successfully sent generic message with id %s to recipient %s", 
-      //   messageId, recipientId);
-    } else {
-      console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
-    }
-  });
-}
+//   }, function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//       var recipientId = body.recipient_id;
+//       var messageId = body.message_id;
+
+//       console.log("Successfully sent generic message with id %s to recipient %s", 
+//         messageId, recipientId);
+//     } else {
+//       console.error("Unable to send message.");
+//       console.error(response);
+//       console.error(error);
+//     }
+//   });
+// }
 
 function sendGenericMessage(recipientId) {
   var messageData = {
