@@ -17,7 +17,7 @@ var session = require('express-session');
 
 
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+
 var fs = require('fs');
 // app.use(session({ secret: 'keyboard cat', resave:false, saveUninitialized:false }));
 // app.use(passport.initialize());
