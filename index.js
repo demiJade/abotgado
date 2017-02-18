@@ -81,7 +81,9 @@ app.post('/webhook', function (req, res) {
 
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
-      	io.emit('new_message', { message: event.message.text, event: event });
+      	if (event.recipient.id == '1868439726765694'){
+      		io.emit('new_message', { message: event.message.text, event: event });
+      	}
         if (event.message) {
           receivedMessage(event);
         } else {
