@@ -351,12 +351,12 @@ function receivedMessage(event) {
 	  	sendUrlMessage(senderID, elements);
 	  } else if (messageText == 'E' || messageText == 'e'){
 	  	io.emit('new_message_from_bot', { message: "A client has found you." });
-	  	var message = "Hello. You have been connected to a consultant. Send your concerns using a @c tag. \n" +
+	  	var message = "Hello. You have been connected to a consultant. Send your concerns using a @atty tag. \n" +
 	  				  "Example: @c I have a concern regarding human rights.";
 	  	sendTextMessage(senderID, message);
-	  } else if (messageText.indexOf("@c") != -1 || messageText.indexOf("@C") != -1){
+	  } else if (messageText.indexOf("@atty") != -1 || messageText.indexOf("@Atty") != -1){
 	  	if (event.recipient.id == '1868439726765694'){
-      		io.emit('new_message_from_bot', { message: messageText.replace("@c", ""), event: event });
+      		io.emit('new_message_from_bot', { message: messageText.replace("@atty", ""), event: event });
       	}
 	  	// io.emit('new_message_from_bot', {message: messageText.replace("@c", ""), event: event});
 	  	
