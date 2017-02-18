@@ -89,9 +89,7 @@ app.post('/webhook', function (req, res) {
 
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
-      	// if (event.recipient.id == '1868439726765694'){
-      	// 	io.emit('new_message', { message: event.message.text, event: event });
-      	// }
+      	
         if (event.message) {
           receivedMessage(event);
         } else if (event.postback) {
@@ -357,7 +355,10 @@ function receivedMessage(event) {
 	  				  "Example: @c I have a concern regarding human rights.";
 	  	sendTextMessage(senderID, message);
 	  } else if (messageText.indexOf("@c") != -1 || messageText.indexOf("@C") != -1){
-	  	io.emit('new_message_from_bot', {message: messageText.replace("@c", ""), event: event});
+	  	if (event.recipient.id == '1868439726765694'){
+      		io.emit('new_message_from_bot', { message: messageText.replace("@c", ""), event: event });
+      	}
+	  	// io.emit('new_message_from_bot', {message: messageText.replace("@c", ""), event: event});
 	  	io.on("new_message_from_consultant", function(data){
 	  		console.log(data);
 	  		sendTextMessage(senderID, data.message);
