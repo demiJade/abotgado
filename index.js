@@ -134,7 +134,26 @@ function receivedMessage(event) {
       	// sendGenericMessage(senderID);
         
     // }
-  } else if (messageText){
+  } else if (messageText == "hi" || messageText == "Hi") {
+  	var message = "Hello. How may I help you? \n" +
+  				  "A - I have a question about legal procedures.\n" + 
+  				  "B - I have a question about legal forms. \n";
+  	sendTextMessage(senderID, message);
+  } else if (messageText == "A" || messageText == "a") {
+  	var message = "C - How do you file a case? \n" + 
+  				  "D - I have a question regarding... \n";
+  	sendTextMessage(senderID, message);
+  } else if (messageText == "B" || messageText == "b") {
+  	var message = "F1 - Deed of Absolute Sale (Real Estate Property)" + 
+  				  "F2 - Contract to Sell (Real Estate Property)" +
+  				  "F3 - Chattel Mortgage (Motor Vehicle)" + 
+  				  "F4 - Contract of Lease/ Rent" +
+  				  "F5 - Rent-to-Own Contract (Real Estate Property)" + 
+  				  "F6 - Deed of Sale (Motor Vehicle)"; 
+  	sendTextMessage(senderID, message);		  
+  }
+
+  else if (messageText){
   	sendTextMessage(senderID, "Got it!");
   }
   else if (messageAttachments) {
