@@ -125,7 +125,7 @@ function receivedMessage(event) {
 
   var messageId = message.mid;
 
-  var messageText = message.text.toLowerCase();
+  var messageText = message.text.toLowerCase() || "";
   var messageAttachments = message.attachments;
   
   if (messageText == 'rift') {
