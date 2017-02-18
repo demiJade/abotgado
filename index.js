@@ -112,7 +112,7 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  socket.emit('new_message', { message: messageText });
+  io.emit('new_message', { message: messageText });
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
@@ -123,9 +123,9 @@ function receivedMessage(event) {
         break;
 
       default:
-      	sendAttachment(senderID);
+      	// sendAttachment(senderID);
       	// sendGenericMessage(senderID);
-        // sendTextMessage(senderID, "HI");
+        sendTextMessage(senderID, "HI");
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
