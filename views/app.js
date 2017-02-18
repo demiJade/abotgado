@@ -9,7 +9,7 @@ var app = new Vue({
   	submit: function(){
   		var vm = this;
   		console.log(vm.new_message)
-  		socket.emit('new_message_from_consultant', {message: vm.new_message, senderId: senderId: senderId});
+  		socket.emit('new_message_from_consultant', {message: vm.new_message, senderId: senderId});
   		vm.new_message = "";
   	}
   }
