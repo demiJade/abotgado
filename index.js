@@ -188,7 +188,7 @@ function receivedMessage(event) {
   } else if (messageText.indexOf('#city') >= 0 || messageText.indexOf('city') >= 0) {
   	var text = messageText.split(" ");
   	var city = text[0];
-  	url = "https://www.google.com/maps/search/law+firm+near+" + city + ",+Philippines/";
+  	var url = "https://www.google.com/maps/search/law+firm+near+" + city + ",+Philippines/";
   	var elements = [{
   		title: "Law Firms Near Your Location",
   		item_url: url
