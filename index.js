@@ -86,12 +86,12 @@ app.post('/webhook', function (req, res) {
       	}
         if (event.message) {
           receivedMessage(event);
-        } else {
-          console.log("Webhook received unknown event: ", event);
-        }
-        if (event.postback){
+        } else if (event.postback) {
         	sendTextMessage(event.sender.id, "Postback received");
         	io.emit("new_postback", {postback: event.postback});
+          
+        } else {
+        	console.log("Webhook received unknown event: ", event);
         }
       });
     });
