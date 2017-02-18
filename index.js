@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 
 // index
 app.get('/', function (req, res) {
-	res.send('hello world i am a secret bot', 200);
+	res.sendStatus(200);
 })
 
 // for facebook verification
