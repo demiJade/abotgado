@@ -1,13 +1,9 @@
 'use strict'
-var express = require('express');
-var app = express();
 var path = require('path');
-var server = require('http').Server(app);
-var io = require('socket.io').listen(server);
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+
+
 
 var mongo = require('mongodb');
 var MongoClient = mongo.MongoClient;
@@ -15,16 +11,27 @@ var userUrl = 'mongodb://localhost:27017/users';
 var bcrypt = require('bcryptjs');
 var session = require('express-session');
 
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const socketIO = require('socket.io');
+const app = express()
 
-var server = require('http').Server(app);
 
-var fs = require('fs');
 // app.use(session({ secret: 'keyboard cat', resave:false, saveUninitialized:false }));
 // app.use(passport.initialize());
 // app.use(passport.session());
 
 const token = "EAATKfwulGJ4BAJs4adITTp6ccC0CpZBcVoEyRZAZBAIxcveVwUsUzfJGwFik4W5a2SpJWuOfZAMakF1HfT3zjkx2OUlGZBw2cJXXIrJt28kZB0gUE7ZBNmwcTSVQgMzUI4VAEazpMMpjDdCGbmbJKwnIDlZBA3XZCexVrPi9KqaC44gZDZD"
-app.set('port', (process.env.PORT || 5000))
+const PORT = process.env.PORT || 5000;
+
+var server = app.listen(PORT);
+console.log("Listening to port: " + PORT);
+// const server = express()
+//   .use((req, res) => res.sendFile(INDEX) )
+//   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
@@ -57,9 +64,9 @@ app.get('/webhook/', function (req, res) {
 })
 
 // Spin up the server
-app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
-})
+// app.listen(app.get('port'), function() {
+//     console.log('running on port', app.get('port'))
+// })
 
 app.post('/webhook', function (req, res) {
   var data = req.body;
