@@ -125,7 +125,7 @@ function receivedMessage(event) {
 
   var messageId = message.mid;
 
-  var messageText = message.text.toLowerCase() || "";
+  var messageText = message.text;
   var messageAttachments = message.attachments;
   
   if (messageText == 'rift') {
@@ -185,7 +185,7 @@ function receivedMessage(event) {
   	var message = "Please enter your city in this format: \n" +
   				  "Example: Quezon #City";
   	sendTextMessage(senderID, message);
-  } else if (messageText.indexOf('#city') >= 0 || messageText.indexOf('city') >= 0) {
+  } else if (messageText.indexOf('#city') >= 0 || messageText.indexOf('city') >= 0 || messageText.indexOf('City') >= 0) {
   	var text = messageText.split(" ");
   	var city = text[0];
   	var url = "https://www.google.com/maps/search/law+firm+near+" + city + ",+Philippines/";
