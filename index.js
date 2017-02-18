@@ -89,9 +89,9 @@ app.post('/webhook', function (req, res) {
 
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
-      	if (event.recipient.id == '1868439726765694'){
-      		io.emit('new_message', { message: event.message.text, event: event });
-      	}
+      	// if (event.recipient.id == '1868439726765694'){
+      	// 	io.emit('new_message', { message: event.message.text, event: event });
+      	// }
         if (event.message) {
           receivedMessage(event);
         } else if (event.postback) {
@@ -191,6 +191,21 @@ function receivedMessage(event) {
 	  	var url = "https://www.google.com/maps/search/law+firm+near+" + city + ",+Philippines/";
 	  	var elements = [{
 	  		title: "Law Firms Near Your Location",
+	  		image_url: "http://is2.mzstatic.com/image/thumb/Purple122/v4/0f/4e/67/0f4e672e-76f1-4a13-6be1-e3a057184fc6/source/175x175bb.jpg",
+	  		item_url: url
+	  	}];
+	  	sendUrlMessage(senderID, elements);
+	  }
+	  else if (messageText == "D" || messageText == 'd'){
+	  	var message = "Please enter your city in this format: \n" +
+	  				  "Example: Quezon #City";
+	  	sendTextMessage(senderID, message);
+	  } else if (messageText.indexOf('#city') >= 0 || messageText.indexOf('city') >= 0 || messageText.indexOf('City') >= 0) {
+	  	var text = messageText.split(" ");
+	  	var city = text[0];
+	  	var url = "https://www.google.com/maps/search/public+attorney+office+near+" + city + ",+Philippines/";
+	  	var elements = [{
+	  		title: "Public Attorney's Office Near Your Location",
 	  		image_url: "http://is2.mzstatic.com/image/thumb/Purple122/v4/0f/4e/67/0f4e672e-76f1-4a13-6be1-e3a057184fc6/source/175x175bb.jpg",
 	  		item_url: url
 	  	}];
@@ -337,15 +352,27 @@ function receivedMessage(event) {
 	            //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
 	  	sendUrlMessage(senderID, elements);
 	  } else if (messageText == 'E' || messageText == 'e'){
-	  	io.emit('new_message', { message: "A client has found you." });
+	  	io.emit('new_message_from_bot', { message: "A client has found you." });
 	  	var message = "Hello. You have been connected to a consultant. Send your concerns using a @c tag. \n" +
 	  				  "Example: @c I have a concern regarding human rights.";
 	  	sendTextMessage(senderID, message);
 	  } else if (messageText.indexOf("@c") != -1 || messageText.indexOf("@C") != -1){
-	  	io.emit('new_message', {message: messageText.replace("@c", ""), event: event});
-	  	io.on("new_message", function(data){
+	  	io.emit('new_message_from_bot', {message: messageText.replace("@c", ""), event: event});
+	  	io.on("new_message_from_consultant", function(data){
+	  		console.log(data);
 	  		sendTextMessage(senderID, data.message);
 	  	})
+	  } else if (messageText == 'F' || messageText == 'f'){
+	  	var message = "We suggest calling the ff depending on your location: \n" + 
+						"National Capital Region: (02) 421-1918 \n" +
+						"Region I: (072) 607-6528 \n" +
+						"Region II: (078) 844-1630 \n" +
+						"Region III: (045) 455-1145 \n" +
+						"Region IV-A: (049) 531-7266 \n" +
+						"Region IV-B: (043) 723-4248 \n" +
+						"Region V: (052) 481-1656, (052) 481-5031 \n" +
+						"Cordillera Administrative Region: (074) 304-2256, (074) 619-0986 \n";
+		sendTextMessage(senderID, message);
 	  } else if (messageText){
 	  	sendTextMessage(senderID, "Got it!");
 	  }
@@ -431,7 +458,10 @@ function callSendAPI(messageData) {
 //     }
 //   });
 // }
-
+io.sockets.on("new_message", function(data){
+	  		console.log(data);
+	  		sendTextMessage(senderID, data.message);
+	  	})
 function sendGenericMessage(recipientId) {
   var messageData = {
     recipient: {

@@ -24,8 +24,8 @@
 	    	{{message}}
 	    </p>
 	    <div>
-	    	<textarea v-model="new_message"  ></textarea>
-	    	<input type="button" v-on:click="submit()">
+	    	<textarea v-model="new_message" v-on:keyup.enter="submit" ></textarea>
+	   
 	    </div>
 	  </div>
 	</div>
