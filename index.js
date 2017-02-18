@@ -166,7 +166,21 @@ function receivedMessage(event) {
   				  // "F19 - Offer to Purchase \n" +
   				  // "F20 - Last Will and Testament \n"; 
   	sendTextMessage(senderID, message);		  
-  } else if (messageText == "C" || messageText == "c"){
+  } else if (messageText == "F*" || messageText == "f*"){
+  	var message = "More options: \n" +
+  				  "F11 - Acknowledgement of Receipt for Payments \n" +
+  				  "F12 - Acknowledgement of Debt \n" +
+  				  "F13 - General Power of Attorney \n" +
+  				  "F14 - Special Power of Attorney \n" +
+  				  "F15 - Deed of Assignment and Transer of Rights \n" +
+  				  "F16 - Deed of Donation \n" +
+  				  "F17 - Contract of Renovation/ Construction of a House or Building \n" +
+  				  "F18 - Authority to Sell/ Lease \n" +
+  				  "F19 - Offer to Purchase \n" +
+  				  "F20 - Last Will and Testament \n"; 
+  	sendTextMessage(senderID, message);
+  }
+  	else if (messageText == "C" || messageText == "c"){
   	var message = "What type of case? \n" +
   				  "C1 - Criminal \n" +
   				  "C2 - Civil \n";
