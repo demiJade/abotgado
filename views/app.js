@@ -10,7 +10,12 @@ var app = new Vue({
   		var vm = this;
   		console.log(vm.new_message);
   		socket.emit('new_message_from_consultant', {message: vm.new_message, senderId: vm.senderId});
-  		my_message.push(vm.new_message);
+  		var obj = {
+  			text: vm.new_message,
+  			client: false,
+  			atty: true
+  		}
+  		message.push(obj);
   		vm.new_message = "";
   	}
   }
@@ -23,7 +28,8 @@ socket.on('new_message_from_bot', function (data) {
 	console.log(data);
 	var obj = {
 		text: data.message,
-		type: "client"
+		client: true,
+		atty: false
 	}
 	app.messages.push(data.message);
 	app.senderId = data.event.sender.id;
