@@ -81,6 +81,7 @@ app.post('/webhook', function (req, res) {
 
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
+      	io.emit('new_message', { message: event.message.text });
         if (event.message) {
           receivedMessage(event);
         } else {
@@ -112,7 +113,7 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-
+  
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
@@ -125,7 +126,7 @@ function receivedMessage(event) {
       default:
       	// sendAttachment(senderID);
       	// sendGenericMessage(senderID);
-        sendTextMessage(senderID, "HI");
+        sendTextMessage(senderID, "Got it!");
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
@@ -184,7 +185,6 @@ function callSendAPI(messageData) {
       console.error(error);
     }
   });  
-  io.emit('new_message', { message: messageData.message.text });
 }
 
 function sendGenericMessage(recipientId) {
