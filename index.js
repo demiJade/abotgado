@@ -24,11 +24,7 @@ var fs = require('fs');
 // app.use(passport.session());
 
 const token = "EAATKfwulGJ4BAJs4adITTp6ccC0CpZBcVoEyRZAZBAIxcveVwUsUzfJGwFik4W5a2SpJWuOfZAMakF1HfT3zjkx2OUlGZBw2cJXXIrJt28kZB0gUE7ZBNmwcTSVQgMzUI4VAEazpMMpjDdCGbmbJKwnIDlZBA3XZCexVrPi9KqaC44gZDZD"
-
-
-var port = 3000;
-server.listen(3000);
-console.log("Listening to port " + port);
+app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
@@ -61,9 +57,9 @@ app.get('/webhook/', function (req, res) {
 })
 
 // Spin up the server
-// app.listen(app.get('port'), function() {
-//     console.log('running on port', app.get('port'))
-// })
+app.listen(app.get('port'), function() {
+    console.log('running on port', app.get('port'))
+})
 
 app.post('/webhook', function (req, res) {
   var data = req.body;
@@ -120,9 +116,9 @@ function receivedMessage(event) {
         break;
 
       default:
-      	// sendAttachment(senderID);
+      	sendAttachment(senderID);
       	// sendGenericMessage(senderID);
-        sendTextMessage(senderID, "HI");
+        // sendTextMessage(senderID, "HI");
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
