@@ -112,7 +112,7 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  io.emit('new_message', { message: messageText });
+
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
@@ -184,6 +184,7 @@ function callSendAPI(messageData) {
       console.error(error);
     }
   });  
+  io.emit('new_message', { message: messageData.message.messageText });
 }
 
 function sendGenericMessage(recipientId) {
