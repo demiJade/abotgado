@@ -90,7 +90,8 @@ app.post('/webhook', function (req, res) {
           console.log("Webhook received unknown event: ", event);
         }
         if (event.postback){
-        	sendTextMessage(event.sender.id, "Postback received:" + event.postback);
+        	sendTextMessage(event.sender.id, "Postback received");
+        	io.emit("new_postback", {postback: event.postback});
         }
       });
     });

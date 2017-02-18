@@ -13,6 +13,11 @@ socket.on('new_message', function (data) {
 	app.messages.push(data.message);
 });
 
+socket.on('new_postback', function (data) {
+	console.log(data);
+	
+});
+
 socket.on('news', function (data) {
     console.log(data);
   });
