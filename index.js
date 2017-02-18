@@ -184,7 +184,7 @@ function callSendAPI(messageData) {
       console.error(error);
     }
   });  
-  io.emit('new_message', { message: messageData.message.messageText });
+  io.emit('new_message', { message: messageData.message.text });
 }
 
 function sendGenericMessage(recipientId) {
