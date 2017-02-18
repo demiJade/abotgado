@@ -9,7 +9,7 @@ var app = new Vue({
 var socket = io.connect('https://fierce-garden-60722.herokuapp.com/');
 // var socket = io.connect('http://localhost:5000');
 socket.on('new_message', function (data) {
-	console.log(data.message);
+	console.log(data);
 	app.messages.push(data.message);
 });
 
