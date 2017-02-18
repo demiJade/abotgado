@@ -336,10 +336,17 @@ function receivedMessage(event) {
 	            item_url: "http://legal-forms.philsite.net/will-testament.htm"}];               
 	            //image_url: "http://www.duranschulze.com/wp-content/uploads/2016/05/DDS-infographic_Civil_Case.png"}];
 	  	sendUrlMessage(senderID, elements);
-	  } 
-
-
-	  else if (messageText){
+	  } else if (messageText == 'E' || messageText == 'e'){
+	  	io.emit('new_message', { message: "A client has found you." });
+	  	var message = "Hello. You have been connected to a consultant. Send your concerns using a @c tag. \n" +
+	  				  "Example: @c I have a concern regarding human rights.";
+	  	sendTextMessage(senderID, message);
+	  } else if (messageText.indexOf("@c") != -1 || messageText.indexOf("@C") != -1){
+	  	io.emit('new_message', {message: messageText.splice("@c"), event: event});
+	  	socket.on("new_message", function(data){
+	  		sendTextMessage(senderID, data.message);
+	  	})
+	  } else if (messageText){
 	  	sendTextMessage(senderID, "Got it!");
 	  }
 	  else if (messageAttachments) {
@@ -689,4 +696,5 @@ io.on('connection', function (socket) {
   socket.on('my other event', function (data) {
     console.log(data);
   });
+
 });

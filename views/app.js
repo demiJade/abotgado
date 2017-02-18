@@ -1,7 +1,14 @@
 var app = new Vue({
   el: '#app',
   data: {
-    messages: []
+    messages: [],
+    new_message: ""
+  }, 
+  methods: {
+  	submit: function(){
+  		var vm = this;
+  		socket.emit('new_message', {message: vm.new_message});
+  	}
   }
 })
 
