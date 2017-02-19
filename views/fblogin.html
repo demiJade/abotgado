@@ -65,6 +65,10 @@
 
   };
 
+//FB.Event.subscribe('auth.login', function(){
+ //   window.location = 'index.html';
+//});
+
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -82,8 +86,11 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+        window.location = 'index.html';
     });
   }
+
+
 </script>
 
 <!--
