@@ -52,6 +52,7 @@ app.use(bodyParser.json())
 //     res.sendFile(path.join(__dirname,'views','index.html'));
 // });
 app.use(express.static('views'));
+app.use(express.static('resource'));
 app.get('/', function (req, res){
     var user = req.user;
         res.sendFile(path.join(__dirname,'views','index.html'));
