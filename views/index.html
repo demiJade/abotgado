@@ -22,9 +22,13 @@
 	    <h3 class="panel-title">ABOTGADO CHATBOX</h3>
 	  </div>
 	  <div class="panel-body" id="app">
+	  	<div class="row">
 	    <p v-for="message in messages" v-bind:class="{ client: message.client, atty: message.atty }">
-	    	{{message.text}}
+	    	
+	    		{{message.text}}
+	    	
 	    </p>
+	    </div>
 	    <div>
 	    	<textarea v-model="new_message" v-on:keyup.enter="submit" ></textarea>
 	   
